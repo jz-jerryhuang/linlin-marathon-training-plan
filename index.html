@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>琳琳的馬拉松訓練計劃 - 雙週期賽事備戰儀表板</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #fdf2f8;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #f472b6;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ec4899;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rosebrand: {
+              50: '#fff1f2',
+              100: '#ffe4e6',
+              200: '#fecdd3',
+              400: '#fb7185',
+              500: '#f43f5e',
+              600: '#e11d48',
+              700: '#be123c',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gradient-to-b from-rose-50/40 via-slate-50 to-slate-100 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <header class="bg-white/90 backdrop-blur-md border-b border-rose-100 sticky top-0 z-30 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-rose-500 via-pink-500 to-amber-400 flex items-center justify-center text-white shadow-md shadow-rose-500/25">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-lg font-black text-slate-900 tracking-tight">琳琳的馬拉松訓練計劃</h1>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-100 text-rose-700">專屬客製化</span>
+          </div>
+          <p class="text-xs text-slate-500">11/14 半馬 (21K) • 01/10 首全馬 (42K) 週期訓練儀表板</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2 text-xs font-medium">
+        <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-pink-50 text-pink-700 border border-pink-200">
+          目前基準：7~8速9K • 6~7速5K
+        </span>
+        <button id="resetStorageBtn" class="px-3 py-1 text-slate-500 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors" title="重置課表勾選進度">
+          重置進度
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    
+    <!-- Target Overview Cards -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      
+      <!-- Card 1: 琳琳的半馬目標 -->
+      <div class="relative overflow-hidden bg-gradient-to-br from-rose-500 via-pink-600 to-rose-700 rounded-3xl p-6 text-white shadow-xl shadow-rose-500/20">
+        <div class="absolute -right-4 -bottom-4 opacity-15">
+          <svg class="w-36 h-36" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/>
+          </svg>
+        </div>
+        <div class="flex justify-between items-start mb-3">
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-white/20 text-white backdrop-blur-md">階段一：半程馬拉松</span>
+          <span class="text-xs font-mono font-semibold text-rose-100">2026/11/14</span>
+        </div>
+        <div class="text-3xl font-extrabold tracking-tight mb-1">2h 35m ~ 2h 48m</div>
+        <p class="text-xs text-rose-100 mb-4">預期賽事巡航配速 7:20 ~ 7:55/km</p>
+        <div class="pt-3 border-t border-white/20 flex items-center justify-between text-xs">
+          <span class="text-rose-100">戰術核心</span>
+          <span class="font-bold text-white">穩紮穩打、無痛安全完賽</span>
+        </div>
+      </div>
+
+      <!-- Card 2: 琳琳的首全馬目標 -->
+      <div class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-950 to-slate-800 rounded-3xl p-6 text-white shadow-xl shadow-slate-950/20">
+        <div class="absolute -right-4 -bottom-4 opacity-15">
+          <svg class="w-36 h-36" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9v-2h2v2zm0-4H9V7h2v5z"/>
+          </svg>
+        </div>
+        <div class="flex justify-between items-start mb-3">
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-400/20 text-amber-300 border border-amber-400/30">階段二：初次全程馬拉松</span>
+          <span class="text-xs font-mono font-semibold text-slate-300">2027/01/10</span>
+        </div>
+        <div class="text-3xl font-extrabold tracking-tight mb-1">5h 25m ~ 5h 45m</div>
+        <p class="text-xs text-slate-300 mb-4">預期賽事巡航配速 7:45 ~ 8:10/km</p>
+        <div class="pt-3 border-t border-white/10 flex items-center justify-between text-xs">
+          <span class="text-slate-300">首馬關鍵</span>
+          <span class="font-bold text-amber-300">關門前安全通過、規律補水補膠</span>
+        </div>
+      </div>
+
+      <!-- Card 3: 琳琳目前的體能分析與進度追蹤 -->
+      <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-rose-500">琳琳的體能診斷</span>
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-emerald-50 text-emerald-700">耐力基底扎實</span>
+          </div>
+          <div class="text-base font-bold text-slate-800">具備 9K 連續慢跑實力</div>
+          <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+            能用 6~7 分速跑 5K 代表心肺容量足夠；能用 7~8 分速跑 9K 代表關節已有耐受度，雙週期重點在於<strong class="text-slate-700">「把跑量溫和拉長，但不要貪快」</strong>。
+          </p>
+        </div>
+        <div class="mt-4 pt-4 border-t border-slate-100">
+          <div class="flex justify-between text-xs font-medium text-slate-600 mb-1">
+            <span>訓練課表累積達成度</span>
+            <span id="overallPercentage" class="font-bold text-rose-600">0%</span>
+          </div>
+          <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+            <div id="overallProgressBar" class="bg-gradient-to-r from-rose-500 to-pink-500 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+          </div>
+          <div class="text-[11px] text-slate-400 mt-2 flex justify-between">
+            <span id="completedSessionsCount">已完成 0 / 56 堂</span>
+            <span>14 週科學化訓練</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pace Zone Reference Card for Linlin -->
+    <section class="bg-white rounded-3xl p-6 border border-rose-100 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+        <div>
+          <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
+            <svg class="w-5 h-5 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+            琳琳的專屬訓練配速區間（切勿跑快，跑對區間才有效）
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">依照琳琳目前「7-8速9K、6-7速5K」換算最佳體能適應區間</p>
+        </div>
+        <div class="text-xs bg-rose-50 text-rose-700 font-medium px-3 py-1.5 rounded-xl border border-rose-200/60">
+          核心原則：輕鬆跑要夠輕鬆，週末長跑嚴禁逞快
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Zone E -->
+        <div class="p-4 rounded-2xl bg-emerald-50/60 border border-emerald-200/80">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold px-2 py-0.5 rounded-md bg-emerald-200 text-emerald-900">輕鬆恢復跑 (Easy)</span>
+            <span class="text-[11px] text-emerald-700">RPE 2~3</span>
+          </div>
+          <div class="text-2xl font-black text-slate-800 font-mono">7:50 ~ 8:30 <span class="text-xs font-normal text-slate-500">/km</span></div>
+          <p class="text-xs text-slate-600 mt-2">完全不喘、可以邊跑邊唱整首歌。幫助雙腿微血管新生與消除疲勞。</p>
+        </div>
+
+        <!-- Zone MP -->
+        <div class="p-4 rounded-2xl bg-amber-50/60 border border-amber-200/80">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold px-2 py-0.5 rounded-md bg-amber-200 text-amber-900">全馬巡航速 (MP)</span>
+            <span class="text-[11px] text-amber-700">RPE 4~5</span>
+          </div>
+          <div class="text-2xl font-black text-slate-800 font-mono">7:30 ~ 7:55 <span class="text-xs font-normal text-slate-500">/km</span></div>
+          <p class="text-xs text-slate-600 mt-2">全馬預計定速節奏，讓琳琳的大腦與肌肉習慣這種節能穩定的步伐。</p>
+        </div>
+
+        <!-- Zone HM / Tempo -->
+        <div class="p-4 rounded-2xl bg-rose-50/60 border border-rose-200/80">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold px-2 py-0.5 rounded-md bg-rose-200 text-rose-900">半馬/節奏跑 (HM / T)</span>
+            <span class="text-[11px] text-rose-700">RPE 6</span>
+          </div>
+          <div class="text-2xl font-black text-slate-800 font-mono">6:45 ~ 7:15 <span class="text-xs font-normal text-slate-500">/km</span></div>
+          <p class="text-xs text-slate-600 mt-2">刺激心肺容量與微耐酸能力（相當於琳琳目前 5K 的穩定輸出速度）。</p>
+        </div>
+
+        <!-- Zone LSD -->
+        <div class="p-4 rounded-2xl bg-indigo-50/60 border border-indigo-200/80">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold px-2 py-0.5 rounded-md bg-indigo-200 text-indigo-900">週末長距離 (LSD)</span>
+            <span class="text-[11px] text-indigo-700">耐力大魔王</span>
+          </div>
+          <div class="text-2xl font-black text-slate-800 font-mono">7:50 ~ 8:20 <span class="text-xs font-normal text-slate-500">/km</span></div>
+          <p class="text-xs text-slate-600 mt-2">重點在「累積時間」而非追求速度，強烈鍛鍊雙腿韌帶與脂肪氧化燃燒能力。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Phase Tabs -->
+    <div class="space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-rose-100 pb-3 gap-3">
+        <div class="inline-flex p-1 bg-slate-200/80 rounded-2xl max-w-lg">
+          <button id="tabPhase1" onclick="switchPhase(1)" class="px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 bg-white text-rose-600 shadow-sm">
+            第 1 階段：半馬穩健推進 (W1 - W6)
+          </button>
+          <button id="tabPhase2" onclick="switchPhase(2)" class="px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 text-slate-600 hover:text-slate-900">
+            第 2 階段：全馬初征大躍進 (W7 - W14)
+          </button>
+        </div>
+        <div class="flex items-center gap-2 text-xs text-slate-500">
+          <span class="inline-block w-2.5 h-2.5 rounded-full bg-rose-500"></span> 琳琳每跑完一堂課即可打勾，系統會自動在手機/瀏覽器記錄！
+        </div>
+      </div>
+
+      <!-- PHASE 1 CONTENT (Weeks 1-6) -->
+      <div id="phase1Container" class="space-y-4">
+        
+        <!-- Week 1 -->
+        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-xs hover:border-rose-200 transition-colors">
+          <div class="px-5 py-3.5 bg-rose-50/40 border-b border-rose-100 flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center space-x-3">
+              <span class="text-sm font-black text-rose-700 bg-rose-100 px-3 py-1 rounded-lg">W1</span>
+              <div>
+                <h3 class="text-sm font-bold text-slate-800">無痛銜接期 • 穩定有氧感</h3>
+                <span class="text-xs text-slate-500">週跑量約 19 KM（以琳琳現有能力為起點）</span>
+              </div>
+            </div>
+            <span class="text-xs font-semibold text-rose-600 bg-rose-100/60 px-2.5 py-1 rounded-full">距離半馬 6 週</span>
+          </div>
+          <div class="p-5 grid grid-cols-1 md:grid-cols-4 gap-3">
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-rose-50/30 transition-colors cursor-pointer">
+              <input type="checkbox" id="w1-d1" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週二 • 節奏定速</span>
+                <p class="text-sm font-bold text-slate-800">5 KM 節奏跑</p>
+                <p class="text-xs text-slate-500">6:50/km (琳琳熟悉的 5K 節奏)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-rose-50/30 transition-colors cursor-pointer">
+              <input type="checkbox" id="w1-d2" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週四 • 輕鬆跑</span>
+                <p class="text-sm font-bold text-slate-800">5 KM 超輕鬆跑</p>
+                <p class="text-xs text-slate-500">7:45~8:00/km (放鬆身心微流汗)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-rose-50/30 transition-colors cursor-pointer">
+              <input type="checkbox" id="w1-d3" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週五 • 核心防傷</span>
+                <p class="text-sm font-bold text-slate-800">30 分鐘徒手肌力</p>
+                <p class="text-xs text-slate-500">靠牆深蹲、臀橋、側躺蚌殼式</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-rose-100 bg-rose-50/30 hover:bg-rose-50/60 transition-colors cursor-pointer">
+              <input type="checkbox" id="w1-d4" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-rose-600 uppercase">週日 • 長距離 LSD</span>
+                <p class="text-sm font-bold text-slate-900">10 KM 微突破跑</p>
+                <p class="text-xs text-slate-500">7:50/km (比原本的 9K 多一點點即可)</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Week 2 -->
+        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-xs hover:border-rose-200 transition-colors">
+          <div class="px-5 py-3.5 bg-rose-50/40 border-b border-rose-100 flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center space-x-3">
+              <span class="text-sm font-black text-rose-700 bg-rose-100 px-3 py-1 rounded-lg">W2</span>
+              <div>
+                <h3 class="text-sm font-bold text-slate-800">耐力加溫期 • 建立雙腿韌性</h3>
+                <span class="text-xs text-slate-500">週跑量約 23 KM</span>
+              </div>
+            </div>
+            <span class="text-xs font-semibold text-rose-600 bg-rose-100/60 px-2.5 py-1 rounded-full">距離半馬 5 週</span>
+          </div>
+          <div class="p-5 grid grid-cols-1 md:grid-cols-4 gap-3">
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-rose-50/30 transition-colors cursor-pointer">
+              <input type="checkbox" id="w2-d1" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週二 • 定速配速跑</span>
+                <p class="text-sm font-bold text-slate-800">6 KM 巡航跑</p>
+                <p class="text-xs text-slate-500">7:10/km (掌握穩定步頻 175)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-rose-50/30 transition-colors cursor-pointer">
+              <input type="checkbox" id="w2-d2" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週四 • 輕鬆慢跑</span>
+                <p class="text-sm font-bold text-slate-800">5 KM 輕鬆跑</p>
+                <p class="text-xs text-slate-500">7:50/km (輕鬆聊天感)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-rose-50/30 transition-colors cursor-pointer">
+              <input type="checkbox" id="w2-d3" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週五 • 交叉恢復</span>
+                <p class="text-sm font-bold text-slate-800">40 分鐘快走或單車</p>
+                <p class="text-xs text-slate-500">不衝擊關節，促進下肢血液循環</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-rose-100 bg-rose-50/30 hover:bg-rose-50/60 transition-colors cursor-pointer">
+              <input type="checkbox" id="w2-d4" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-rose-600 uppercase">週日 • 長距離 LSD</span>
+                <p class="text-sm font-bold text-slate-900">12 KM 耐力探索</p>
+                <p class="text-xs text-slate-500">7:55~8:05/km (帶水壺，每2.5K停下喝一口水)</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Week 3 -->
+        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-xs hover:border-rose-200 transition-colors">
+          <div class="px-5 py-3.5 bg-rose-50/40 border-b border-rose-100 flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center space-x-3">
+              <span class="text-sm font-black text-rose-700 bg-rose-100 px-3 py-1 rounded-lg">W3</span>
+              <div>
+                <h3 class="text-sm font-bold text-slate-800">半馬適應期 • 首次能量膠演練</h3>
+                <span class="text-xs text-slate-500">週跑量約 26 KM</span>
+              </div>
+            </div>
+            <span class="text-xs font-semibold text-rose-600 bg-rose-100/60 px-2.5 py-1 rounded-full">距離半馬 4 週</span>
+          </div>
+          <div class="p-5 grid grid-cols-1 md:grid-cols-4 gap-3">
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-rose-50/30 transition-colors cursor-pointer">
+              <input type="checkbox" id="w3-d1" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週二 • 變速趣味跑</span>
+                <p class="text-sm font-bold text-slate-800">6 KM (含 3 段漸速)</p>
+                <p class="text-xs text-slate-500">熱身後穿插 3 次 300 公尺 6:30 速喚醒腳步</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-rose-50/30 transition-colors cursor-pointer">
+              <input type="checkbox" id="w3-d2" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週四 • 輕鬆慢跑</span>
+                <p class="text-sm font-bold text-slate-800">6 KM 輕鬆跑</p>
+                <p class="text-xs text-slate-500">7:50/km (深長呼吸放鬆肩膀)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-rose-50/30 transition-colors cursor-pointer">
+              <input type="checkbox" id="w3-d3" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週五 • 臀腿肌耐力</span>
+                <p class="text-sm font-bold text-slate-800">35 分鐘防傷鍛鍊</p>
+                <p class="text-xs text-slate-500">彈力帶側走、小腿提踵、核心棒式</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-rose-100 bg-rose-50/30 hover:bg-rose-50/60 transition-colors cursor-pointer">
+              <input type="checkbox" id="w3-d4" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-rose-600 uppercase">週日 • 長距離 LSD</span>
+                <p class="text-sm font-bold text-slate-900">14 KM 巡航耐力</p>
+                <p class="text-xs text-slate-500">7:55/km (在 8K 處實測吞第 1 包能量膠)</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Week 4 -->
+        <div class="bg-white rounded-3xl border-2 border-rose-400 overflow-hidden shadow-md">
+          <div class="px-5 py-3.5 bg-rose-500 text-white flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center space-x-3">
+              <span class="text-sm font-black bg-white text-rose-600 px-3 py-1 rounded-lg">W4 ★</span>
+              <div>
+                <h3 class="text-sm font-bold">半馬最高峰值週 (Linlin's Peak)</h3>
+                <span class="text-xs text-rose-100">16 公里長跑模擬 • 奠定半馬完賽底氣</span>
+              </div>
+            </div>
+            <span class="text-xs font-black uppercase bg-amber-300 text-slate-900 px-3 py-1 rounded-full">半馬信心之戰</span>
+          </div>
+          <div class="p-5 grid grid-cols-1 md:grid-cols-4 gap-3">
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-rose-50/30 transition-colors cursor-pointer">
+              <input type="checkbox" id="w4-d1" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週二 • 半馬目標速</span>
+                <p class="text-sm font-bold text-slate-800">6 KM 定速跑</p>
+                <p class="text-xs text-slate-500">7:25/km (體驗比賽巡航手感)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-rose-50/30 transition-colors cursor-pointer">
+              <input type="checkbox" id="w4-d2" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週四 • 輕鬆跑</span>
+                <p class="text-sm font-bold text-slate-800">5 KM 超慢跑</p>
+                <p class="text-xs text-slate-500">8:00/km (蓄積雙腿精力)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-rose-50/30 transition-colors cursor-pointer">
+              <input type="checkbox" id="w4-d3" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週五 • 滾筒伸展</span>
+                <p class="text-sm font-bold text-slate-800">30 分鐘深層放鬆</p>
+                <p class="text-xs text-slate-500">大腿前側、髂脛束、足底筋膜</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border-2 border-rose-300 bg-rose-50/60 hover:bg-rose-50 transition-colors cursor-pointer">
+              <input type="checkbox" id="w4-d4" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-rose-700 uppercase">週日 • 16KM 終極模擬</span>
+                <p class="text-sm font-extrabold text-slate-900">16 KM 耐力大驗收</p>
+                <p class="text-xs text-slate-600">8:00/km (在 7K 與 13K 各吞 1 包能量膠)</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Week 5 -->
+        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-xs hover:border-rose-200 transition-colors">
+          <div class="px-5 py-3.5 bg-amber-50/40 border-b border-amber-100 flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center space-x-3">
+              <span class="text-sm font-black text-amber-800 bg-amber-100 px-3 py-1 rounded-lg">W5</span>
+              <div>
+                <h3 class="text-sm font-bold text-slate-800">賽前減量期 (Taper) • 充飽電量</h3>
+                <span class="text-xs text-slate-500">跑量減少 35%，讓微受損肌纖維完全修復</span>
+              </div>
+            </div>
+            <span class="text-xs font-semibold text-amber-700 bg-amber-100/70 px-2.5 py-1 rounded-full">距離半馬 2 週</span>
+          </div>
+          <div class="p-5 grid grid-cols-1 md:grid-cols-4 gap-3">
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-rose-50/30 transition-colors cursor-pointer">
+              <input type="checkbox" id="w5-d1" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週二 • 感覺跑</span>
+                <p class="text-sm font-bold text-slate-800">5 KM 配速跑</p>
+                <p class="text-xs text-slate-500">7:25/km (找回輕快韻律感)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-rose-50/30 transition-colors cursor-pointer">
+              <input type="checkbox" id="w5-d2" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週四 • 輕鬆慢跑</span>
+                <p class="text-sm font-bold text-slate-800">4 KM 輕鬆跑</p>
+                <p class="text-xs text-slate-500">8:00/km (絕對不要跑多或跑快)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-rose-50/30 transition-colors cursor-pointer">
+              <input type="checkbox" id="w5-d3" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週五 • 靜態伸展</span>
+                <p class="text-sm font-bold text-slate-800">早睡與水分補充</p>
+                <p class="text-xs text-slate-500">多喝水，避免熬夜疲倦</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-rose-50/30 transition-colors cursor-pointer">
+              <input type="checkbox" id="w5-d4" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週日 • 減量輕鬆跑</span>
+                <p class="text-sm font-bold text-slate-800">10 KM 輕鬆跑</p>
+                <p class="text-xs text-slate-500">7:50/km (意猶未盡就結束)</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Week 6: Race Week -->
+        <div class="bg-gradient-to-r from-rose-50 via-pink-50 to-amber-50 rounded-3xl border-2 border-rose-400 overflow-hidden shadow-lg">
+          <div class="px-5 py-3.5 bg-gradient-to-r from-rose-600 to-pink-600 text-white flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center space-x-3">
+              <span class="text-sm font-black bg-white text-rose-700 px-3 py-1 rounded-lg">W6</span>
+              <div>
+                <h3 class="text-sm font-bold">半馬大考週 (Race Week)</h3>
+                <span class="text-xs text-rose-100">2026/11/14 半程馬拉松 • 琳琳的初半馬榮耀舞台</span>
+              </div>
+            </div>
+            <span class="text-xs font-black uppercase bg-amber-300 text-slate-900 px-3.5 py-1 rounded-full animate-bounce">RACE DAY</span>
+          </div>
+          <div class="p-5 grid grid-cols-1 md:grid-cols-4 gap-3">
+            <label class="flex items-start p-3.5 rounded-2xl border border-rose-100 bg-white shadow-xs cursor-pointer">
+              <input type="checkbox" id="w6-d1" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週二 • 喚醒跑</span>
+                <p class="text-sm font-bold text-slate-800">3 KM 慢跑 + 2趟開腿</p>
+                <p class="text-xs text-slate-500">短跑喚醒神經，不出大汗</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-rose-100 bg-white shadow-xs cursor-pointer">
+              <input type="checkbox" id="w6-d2" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週四 • 散步或超慢跑</span>
+                <p class="text-sm font-bold text-slate-800">2 KM 輕慢動動</p>
+                <p class="text-xs text-slate-500">讓關節滑囊分泌潤滑液即可</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-rose-100 bg-white shadow-xs cursor-pointer">
+              <input type="checkbox" id="w6-d3" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-600 rounded border-slate-300 focus:ring-rose-500">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週五 • 裝備整備</span>
+                <p class="text-sm font-bold text-slate-800">釘號碼布 & 早點睡</p>
+                <p class="text-xs text-slate-500">備齊 3 包能量膠與鹽糖</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border-2 border-rose-500 bg-rose-600 text-white shadow-md cursor-pointer">
+              <input type="checkbox" id="w6-d4" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-rose-800 rounded border-white focus:ring-white">
+              <div class="ml-3 text-white">
+                <span class="text-xs font-black uppercase text-amber-300">週六 11/14 • 正式半馬</span>
+                <p class="text-base font-black">21.0975 KM 完賽征程</p>
+                <p class="text-xs text-rose-100">用 7:25~7:50 穩健收下獎牌！</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PHASE 2 CONTENT (Weeks 7-14) -->
+      <div id="phase2Container" class="hidden space-y-4">
+        
+        <!-- Week 7 -->
+        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-xs hover:border-purple-200 transition-colors">
+          <div class="px-5 py-3.5 bg-slate-50 border-b border-slate-200 flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center space-x-3">
+              <span class="text-sm font-black text-purple-700 bg-purple-100 px-3 py-1 rounded-lg">W7</span>
+              <div>
+                <h3 class="text-sm font-bold text-slate-800">半馬賽後主動修復 • 呵護雙腿</h3>
+                <span class="text-xs text-slate-500">嚴禁劇烈訓練，重點在消腫與排酸</span>
+              </div>
+            </div>
+            <span class="text-xs font-semibold text-purple-700 bg-purple-100/60 px-2.5 py-1 rounded-full">距離全馬 8 週</span>
+          </div>
+          <div class="p-5 grid grid-cols-1 md:grid-cols-4 gap-3">
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w7-d1" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週二 • 泡澡伸展</span>
+                <p class="text-sm font-bold text-slate-800">完全不跑 • 泡溫水</p>
+                <p class="text-xs text-slate-500">小腿由下往上推拿消水腫</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w7-d2" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週四 • 超慢跑重啟</span>
+                <p class="text-sm font-bold text-slate-800">4 KM 恢復超慢跑</p>
+                <p class="text-xs text-slate-500">8:15~8:30/km (慢速排酸)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w7-d3" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週五 • 交叉有氧</span>
+                <p class="text-sm font-bold text-slate-800">30 分鐘快走或游泳</p>
+                <p class="text-xs text-slate-500">完全不帶衝擊的活動身體</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w7-d4" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-purple-600 uppercase">週日 • 甦醒慢跑</span>
+                <p class="text-sm font-bold text-slate-900">8 KM 輕鬆慢跑</p>
+                <p class="text-xs text-slate-500">8:00/km (確認半馬後關節無刺痛)</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Week 8 -->
+        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-xs hover:border-purple-200 transition-colors">
+          <div class="px-5 py-3.5 bg-slate-50 border-b border-slate-200 flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center space-x-3">
+              <span class="text-sm font-black text-purple-700 bg-purple-100 px-3 py-1 rounded-lg">W8</span>
+              <div>
+                <h3 class="text-sm font-bold text-slate-800">全馬能量打底 • 18K 再出發</h3>
+                <span class="text-xs text-slate-500">週跑量約 33 KM</span>
+              </div>
+            </div>
+            <span class="text-xs font-semibold text-purple-700 bg-purple-100/60 px-2.5 py-1 rounded-full">距離全馬 7 週</span>
+          </div>
+          <div class="p-5 grid grid-cols-1 md:grid-cols-4 gap-3">
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w8-d1" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週二 • 全馬配速巡航</span>
+                <p class="text-sm font-bold text-slate-800">7 KM 定速跑</p>
+                <p class="text-xs text-slate-500">7:45/km (體會全馬的巡航速度)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w8-d2" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週四 • 輕鬆慢跑</span>
+                <p class="text-sm font-bold text-slate-800">6 KM 輕鬆跑</p>
+                <p class="text-xs text-slate-500">8:00/km (維持肌肉彈性)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w8-d3" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週五 • 臀腿肌力</span>
+                <p class="text-sm font-bold text-slate-800">30 分鐘徒手訓練</p>
+                <p class="text-xs text-slate-500">加強臀中肌以穩定骨盆</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-purple-100 bg-purple-50/30 cursor-pointer">
+              <input type="checkbox" id="w8-d4" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-purple-700 uppercase">週日 • 長距離 LSD</span>
+                <p class="text-sm font-bold text-slate-900">18 KM 有氧耐力</p>
+                <p class="text-xs text-slate-500">8:05/km (每 5K 喝運動飲料)</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Week 9 -->
+        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-xs hover:border-purple-200 transition-colors">
+          <div class="px-5 py-3.5 bg-slate-50 border-b border-slate-200 flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center space-x-3">
+              <span class="text-sm font-black text-purple-700 bg-purple-100 px-3 py-1 rounded-lg">W9</span>
+              <div>
+                <h3 class="text-sm font-bold text-slate-800">突破 20K 里程碑 • 燃脂能力建構</h3>
+                <span class="text-xs text-slate-500">週跑量約 37 KM</span>
+              </div>
+            </div>
+            <span class="text-xs font-semibold text-purple-700 bg-purple-100/60 px-2.5 py-1 rounded-full">距離全馬 6 週</span>
+          </div>
+          <div class="p-5 grid grid-cols-1 md:grid-cols-4 gap-3">
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w9-d1" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週二 • 配速跑</span>
+                <p class="text-sm font-bold text-slate-800">8 KM 定速跑</p>
+                <p class="text-xs text-slate-500">7:40/km (平穩省力的步伐)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w9-d2" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週四 • 輕鬆慢跑</span>
+                <p class="text-sm font-bold text-slate-800">7 KM 輕鬆跑</p>
+                <p class="text-xs text-slate-500">8:00/km (不要給自己壓力)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w9-d3" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週五 • 核心穩定</span>
+                <p class="text-sm font-bold text-slate-800">30 分鐘核心強化</p>
+                <p class="text-xs text-slate-500">死蟲式、側棒式、鳥狗式</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-purple-100 bg-purple-50/30 cursor-pointer">
+              <input type="checkbox" id="w9-d4" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-purple-700 uppercase">週日 • 長距離 LSD</span>
+                <p class="text-sm font-bold text-slate-900">22 KM 耐力築底</p>
+                <p class="text-xs text-slate-500">8:10/km (每 6K 吞 1 包能量膠演練)</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Week 10 -->
+        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-xs hover:border-purple-200 transition-colors">
+          <div class="px-5 py-3.5 bg-slate-50 border-b border-slate-200 flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center space-x-3">
+              <span class="text-sm font-black text-purple-700 bg-purple-100 px-3 py-1 rounded-lg">W10</span>
+              <div>
+                <h3 class="text-sm font-bold text-slate-800">深入全馬深水區 • 25K 長征考驗</h3>
+                <span class="text-xs text-slate-500">週跑量約 41 KM</span>
+              </div>
+            </div>
+            <span class="text-xs font-semibold text-purple-700 bg-purple-100/60 px-2.5 py-1 rounded-full">距離全馬 5 週</span>
+          </div>
+          <div class="p-5 grid grid-cols-1 md:grid-cols-4 gap-3">
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w10-d1" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週二 • 配速節奏跑</span>
+                <p class="text-sm font-bold text-slate-800">8 KM 全馬速</p>
+                <p class="text-xs text-slate-500">7:40/km (專注小步高頻)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w10-d2" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週四 • 輕鬆慢跑</span>
+                <p class="text-sm font-bold text-slate-800">8 KM 輕鬆跑</p>
+                <p class="text-xs text-slate-500">8:05/km (放鬆身軀排解壓力)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w10-d3" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週五 • 恢復慢跑</span>
+                <p class="text-sm font-bold text-slate-800">4 KM 超慢跑</p>
+                <p class="text-xs text-slate-500">8:30/km (輕鬆動動即可)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-purple-100 bg-purple-50/30 cursor-pointer">
+              <input type="checkbox" id="w10-d4" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-purple-700 uppercase">週日 • 長距離 LSD</span>
+                <p class="text-sm font-bold text-slate-900">25 KM 耐力極限</p>
+                <p class="text-xs text-slate-500">8:15/km (帶好 4 包膠與鹽糖補充電解質)</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Week 11 (Peak of Linlin's Full Marathon) -->
+        <div class="bg-white rounded-3xl border-2 border-purple-500 overflow-hidden shadow-xl">
+          <div class="px-5 py-3.5 bg-gradient-to-r from-purple-800 via-indigo-900 to-slate-900 text-white flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center space-x-3">
+              <span class="text-sm font-black bg-amber-400 text-slate-900 px-3 py-1 rounded-lg">W11 ★</span>
+              <div>
+                <h3 class="text-sm font-bold">全馬終極考驗週 (The 28K Peak)</h3>
+                <span class="text-xs text-purple-200">琳琳人生最長距離挑戰：28 公里耐力洗禮</span>
+              </div>
+            </div>
+            <span class="text-xs font-black text-amber-300 bg-white/10 px-3 py-1 rounded-full border border-amber-300/30">全週期最關鍵</span>
+          </div>
+          <div class="p-5 grid grid-cols-1 md:grid-cols-4 gap-3">
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w11-d1" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週二 • 巡航定速跑</span>
+                <p class="text-sm font-bold text-slate-800">8 KM 全馬配速</p>
+                <p class="text-xs text-slate-500">7:40/km (身體記憶這個速度)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w11-d2" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週四 • 輕鬆慢跑</span>
+                <p class="text-sm font-bold text-slate-800">6 KM 輕鬆跑</p>
+                <p class="text-xs text-slate-500">8:05/km (為週末儲蓄能量)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w11-d3" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週五 • 靜心放鬆</span>
+                <p class="text-sm font-bold text-slate-800">完全休息 & 多補水</p>
+                <p class="text-xs text-slate-500">確保週末雙腿輕盈、無酸痛感</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border-2 border-purple-400 bg-purple-50 cursor-pointer">
+              <input type="checkbox" id="w11-d4" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-700 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-purple-700 uppercase">週日 • 28KM 榮耀考驗</span>
+                <p class="text-base font-black text-slate-900">28 KM 終極長距離</p>
+                <p class="text-xs text-slate-600">8:15~8:25/km (只要完成，全馬必定能完賽！)</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Week 12 -->
+        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-xs hover:border-amber-200 transition-colors">
+          <div class="px-5 py-3.5 bg-amber-50/50 border-b border-amber-100 flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center space-x-3">
+              <span class="text-sm font-black text-amber-800 bg-amber-100 px-3 py-1 rounded-lg">W12</span>
+              <div>
+                <h3 class="text-sm font-bold text-slate-800">全馬減量第 1 週 (Taper 75%)</h3>
+                <span class="text-xs text-slate-500">跑量適度縮減，消除深層筋膜疲累感</span>
+              </div>
+            </div>
+            <span class="text-xs font-semibold text-amber-700 bg-amber-100 px-2.5 py-1 rounded-full">距離全馬 3 週</span>
+          </div>
+          <div class="p-5 grid grid-cols-1 md:grid-cols-4 gap-3">
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w12-d1" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週二 • 配速維持</span>
+                <p class="text-sm font-bold text-slate-800">6 KM 全馬速</p>
+                <p class="text-xs text-slate-500">7:45/km (動作輕盈順暢)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w12-d2" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週四 • 輕鬆慢跑</span>
+                <p class="text-sm font-bold text-slate-800">5 KM 輕鬆跑</p>
+                <p class="text-xs text-slate-500">8:05/km (輕鬆活動身軀)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w12-d3" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週五 • 伸展核心</span>
+                <p class="text-sm font-bold text-slate-800">25 分鐘滾筒按摩</p>
+                <p class="text-xs text-slate-500">重點放鬆小腿肚與足底</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w12-d4" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週日 • 減量長跑</span>
+                <p class="text-sm font-bold text-slate-800">16 KM 輕鬆巡航</p>
+                <p class="text-xs text-slate-500">8:00/km (維持微汗就好，不疲勞)</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Week 13 -->
+        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-xs hover:border-amber-200 transition-colors">
+          <div class="px-5 py-3.5 bg-amber-50/50 border-b border-amber-100 flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center space-x-3">
+              <span class="text-sm font-black text-amber-800 bg-amber-100 px-3 py-1 rounded-lg">W13</span>
+              <div>
+                <h3 class="text-sm font-bold text-slate-800">全馬減量第 2 週 (Taper 50%)</h3>
+                <span class="text-xs text-slate-500">大幅降低疲勞，身體儲備肝醣與水分</span>
+              </div>
+            </div>
+            <span class="text-xs font-semibold text-amber-700 bg-amber-100 px-2.5 py-1 rounded-full">距離全馬 2 週</span>
+          </div>
+          <div class="p-5 grid grid-cols-1 md:grid-cols-4 gap-3">
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w13-d1" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週二 • 感覺微跑</span>
+                <p class="text-sm font-bold text-slate-800">5 KM 配速跑</p>
+                <p class="text-xs text-slate-500">7:45/km (感覺腳步特別輕盈)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w13-d2" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週四 • 輕鬆慢跑</span>
+                <p class="text-sm font-bold text-slate-800">4 KM 慢跑</p>
+                <p class="text-xs text-slate-500">8:10/km (放鬆身心)</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w13-d3" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週五 • 充足睡眠</span>
+                <p class="text-sm font-bold text-slate-800">早點睡覺 • 泡腳</p>
+                <p class="text-xs text-slate-500">每晚睡足 7.5~8 小時</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 cursor-pointer">
+              <input type="checkbox" id="w13-d4" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週日 • 賽前最後長跑</span>
+                <p class="text-sm font-bold text-slate-800">10 KM 輕鬆跑</p>
+                <p class="text-xs text-slate-500">8:00/km (跑完毫無負擔即可)</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Week 14: Final Full Marathon Week -->
+        <div class="bg-gradient-to-r from-slate-900 via-purple-950 to-slate-900 text-white rounded-3xl border-2 border-amber-400 overflow-hidden shadow-2xl">
+          <div class="px-5 py-3.5 bg-black/40 border-b border-white/10 flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center space-x-3">
+              <span class="text-sm font-black bg-amber-400 text-slate-900 px-3 py-1 rounded-lg">W14</span>
+              <div>
+                <h3 class="text-sm font-bold text-white">全馬決戰之週 (Full Marathon Week)</h3>
+                <span class="text-xs text-purple-200">2027/01/10 踏上 42.195KM 終極殿堂 • 琳琳的初全馬</span>
+              </div>
+            </div>
+            <span class="text-xs font-black uppercase bg-rose-600 text-white px-3.5 py-1 rounded-full animate-pulse">42.195 KM</span>
+          </div>
+          <div class="p-5 grid grid-cols-1 md:grid-cols-4 gap-3 text-slate-800">
+            <label class="flex items-start p-3.5 rounded-2xl bg-white shadow-xs cursor-pointer">
+              <input type="checkbox" id="w14-d1" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週二 • 點火維持</span>
+                <p class="text-sm font-bold text-slate-900">3 KM 慢跑 + 2趟快步</p>
+                <p class="text-xs text-slate-500">輕動 20 分鐘即打卡收工</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl bg-white shadow-xs cursor-pointer">
+              <input type="checkbox" id="w14-d2" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">週四 • 賽前輕慢跑</span>
+                <p class="text-sm font-bold text-slate-900">2 KM 超慢排酸</p>
+                <p class="text-xs text-slate-500">微流汗即可，勿吹風著涼</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl bg-white shadow-xs cursor-pointer">
+              <input type="checkbox" id="w14-d3" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-purple-600 rounded">
+              <div class="ml-3">
+                <span class="text-xs font-bold text-slate-400 uppercase">五/六 • 高碳水補給</span>
+                <p class="text-sm font-bold text-slate-900">多吃米飯地瓜、充足休息</p>
+                <p class="text-xs text-slate-500">確認號碼布、跑鞋、晶片固定牢固</p>
+              </div>
+            </label>
+            <label class="flex items-start p-3.5 rounded-2xl border-2 border-amber-400 bg-amber-400 text-slate-950 shadow-lg cursor-pointer">
+              <input type="checkbox" id="w14-d4" onchange="updateCheck(this)" class="mt-1 w-4 h-4 text-slate-900 rounded border-slate-900">
+              <div class="ml-3">
+                <span class="text-xs font-black uppercase text-rose-800">週日 01/10 • 正式全馬日</span>
+                <p class="text-base font-black">42.195 KM 圓夢大作戰</p>
+                <p class="text-xs font-bold text-slate-800">以 7:45~8:10 穩跑，笑著衝過終點線！</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Linlin's Special Race Day & Nutrition Directives -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      
+      <!-- Energy Gel & Hydration for Linlin -->
+      <div class="bg-white rounded-3xl p-6 border border-rose-100 shadow-sm">
+        <h3 class="text-base font-bold text-slate-900 flex items-center gap-2 mb-3">
+          <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+          </svg>
+          琳琳的能量與水分補給時間表
+        </h3>
+        <ul class="space-y-3.5 text-xs text-slate-600">
+          <li class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">1</span>
+            <div>
+              <strong class="text-slate-900">半馬補給（準備 3 包膠）</strong>：建議在 <span class="font-bold text-rose-600">7K</span> 與 <span class="font-bold text-rose-600">14K</span> 處各吃 1 包，第 3 包備用。吃膠務必在進水站前 50 公尺撕開，配白開水服下，避免黏膩乾嘔。
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">2</span>
+            <div>
+              <strong class="text-slate-900">全馬防撞牆補給（準備 6~7 包膠 + 鹽糖）</strong>：以「定時」原則每 <span class="font-bold text-rose-600">45~50 分鐘（約 6 公里）</span>補充一包。切記：初馬不要等餓了或沒力氣才吃，那時候肝醣已經枯竭。
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">3</span>
+            <div>
+              <strong class="text-slate-900">進水站的降速心法</strong>：看到水站不要緊張慌亂，提早靠邊並「換成快走」，小口喝半杯水或運動飲料，深呼吸調節心率後再起跑，這反而比邊跑邊嗆到更省力！
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Injury prevention guidelines -->
+      <div class="bg-white rounded-3xl p-6 border border-rose-100 shadow-sm">
+        <h3 class="text-base font-bold text-slate-900 flex items-center gap-2 mb-3">
+          <svg class="w-5 h-5 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+          </svg>
+          防受傷與配速紀律（首馬安全三大鐵則）
+        </h3>
+        <ul class="space-y-3.5 text-xs text-slate-600">
+          <li class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">!</span>
+            <div>
+              <strong class="text-slate-900">起跑千萬不要「跟著人群衝」</strong>：比賽前 3 公里身邊所有人都在往前衝，琳琳一定要看手錶，把速度牢牢鎖在 <span class="font-bold text-rose-600">7:40~7:50</span>。前面每衝快 30 秒，後面 30K 就會多走 10 分鐘。
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">!</span>
+            <div>
+              <strong class="text-slate-900">小步頻勝過大步幅</strong>：不要跨大步，盡量維持 170~175 步/分的小碎步，讓重心落在腳掌下方，能大幅減少膝蓋與骨盆的震盪承受力。
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">!</span>
+            <div>
+              <strong class="text-slate-900">不舒服的「3分鐘評估」</strong>：若跑步途中膝蓋或足底出現尖銳刺痛，先改為慢步快走 3 分鐘，若刺痛未改善請直接停跑，不要跟身體硬拼，安全第一。
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </section>
+
+    <!-- Interactive Pace Calculator adapted for Linlin -->
+    <section class="bg-gradient-to-br from-slate-950 via-purple-950 to-rose-950 rounded-3xl p-6 sm:p-8 text-white shadow-2xl">
+      <div class="max-w-3xl">
+        <h3 class="text-lg font-bold flex items-center gap-2 mb-2">
+          <svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          琳琳的配速完賽時間試算機
+        </h3>
+        <p class="text-xs text-slate-300 mb-6">自由調整每公里預計跑的分、秒，即時計算 5K、10K、半馬與全馬的完賽時間。</p>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1.5">分 / 公里 (Min)</label>
+            <input type="number" id="calcMin" value="7" min="4" max="12" oninput="calculateSplits()" 
+                   class="w-full bg-slate-900/90 border border-slate-700 rounded-2xl px-4 py-2.5 text-white font-bold text-center focus:ring-2 focus:ring-rose-500 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1.5">秒 / 公里 (Sec)</label>
+            <input type="number" id="calcSec" value="45" min="0" max="59" step="5" oninput="calculateSplits()" 
+                   class="w-full bg-slate-900/90 border border-slate-700 rounded-2xl px-4 py-2.5 text-white font-bold text-center focus:ring-2 focus:ring-rose-500 focus:outline-none">
+          </div>
+          <div class="flex items-end gap-2">
+            <button onclick="applyPreset(7, 45)" class="flex-1 bg-rose-600 hover:bg-rose-500 text-xs font-bold py-3 rounded-2xl transition-colors">
+              全馬推薦速 (7:45)
+            </button>
+            <button onclick="applyPreset(7, 25)" class="flex-1 bg-pink-600/80 hover:bg-pink-600 text-xs font-bold py-3 rounded-2xl transition-colors">
+              半馬推薦速 (7:25)
+            </button>
+          </div>
+        </div>
+
+        <!-- Calculated Output Cards -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+          <div class="p-3 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xs">
+            <span class="text-[11px] text-slate-400 font-medium">5 公里</span>
+            <div id="res5k" class="text-base sm:text-lg font-bold text-white mt-1">--</div>
+          </div>
+          <div class="p-3 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xs">
+            <span class="text-[11px] text-slate-400 font-medium">10 公里</span>
+            <div id="res10k" class="text-base sm:text-lg font-bold text-white mt-1">--</div>
+          </div>
+          <div class="p-3 bg-rose-500/20 border border-rose-400/30 rounded-2xl backdrop-blur-xs">
+            <span class="text-[11px] text-rose-300 font-bold">半馬 21.0975K</span>
+            <div id="resHM" class="text-base sm:text-lg font-extrabold text-rose-200 mt-1">--</div>
+          </div>
+          <div class="p-3 bg-amber-500/20 border border-amber-400/30 rounded-2xl backdrop-blur-xs">
+            <span class="text-[11px] text-amber-300 font-bold">全馬 42.195K</span>
+            <div id="resFM" class="text-base sm:text-lg font-extrabold text-amber-200 mt-1">--</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-white border-t border-rose-100 mt-12 py-6 text-center text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 space-y-1">
+      <p class="font-medium text-slate-600">琳琳的專屬馬拉松旅程 • 每一步都在創造屬於自己的歷史</p>
+      <p>勾選打卡進度會自動儲存在此裝置的瀏覽器中，隨時打開都能接續進度。</p>
+    </div>
+  </footer>
+
+  <script>
+    // Tab switching for Phases
+    function switchPhase(phaseNum) {
+      const p1Btn = document.getElementById('tabPhase1');
+      const p2Btn = document.getElementById('tabPhase2');
+      const p1Cont = document.getElementById('phase1Container');
+      const p2Cont = document.getElementById('phase2Container');
+
+      if (phaseNum === 1) {
+        p1Btn.className = "px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 bg-white text-rose-600 shadow-sm";
+        p2Btn.className = "px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 text-slate-600 hover:text-slate-900";
+        p1Cont.classList.remove('hidden');
+        p2Cont.classList.add('hidden');
+      } else {
+        p2Btn.className = "px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 bg-white text-purple-700 shadow-sm";
+        p1Btn.className = "px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 text-slate-600 hover:text-slate-900";
+        p2Cont.classList.remove('hidden');
+        p1Cont.classList.add('hidden');
+      }
+    }
+
+    // LocalStorage management with unique key for Linlin
+    const STORAGE_KEY = 'linlin_marathon_training_progress_v1';
+
+    function loadProgress() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        let checkedCount = 0;
+        
+        checkboxes.forEach(cb => {
+          if (saved[cb.id]) {
+            cb.checked = true;
+            checkedCount++;
+          } else {
+            cb.checked = false;
+          }
+        });
+
+        updateProgressUI(checkedCount, checkboxes.length);
+      } catch (e) {
+        console.error('Error loading Linlin progress:', e);
+      }
+    }
+
+    function updateCheck(input) {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+        saved[input.id] = input.checked;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+        
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const checkedCount = Array.from(checkboxes).filter(c => c.checked).length;
+        updateProgressUI(checkedCount, checkboxes.length);
+      } catch (e) {
+        console.error('Error saving Linlin progress:', e);
+      }
+    }
+
+    function updateProgressUI(checked, total) {
+      const percentage = total > 0 ? Math.round((checked / total) * 100) : 0;
+      const bar = document.getElementById('overallProgressBar');
+      const text = document.getElementById('overallPercentage');
+      const count = document.getElementById('completedSessionsCount');
+
+      if (bar) bar.style.width = percentage + '%';
+      if (text) text.innerText = percentage + '%';
+      if (count) count.innerText = `已完成 ${checked} / ${total} 堂課表`;
+    }
+
+    // Reset button
+    document.getElementById('resetStorageBtn').addEventListener('click', () => {
+      // In-page modal or confirmation without blocking alert
+      const confirmReset = window.confirm ? window.confirm('琳琳，確定要重置所有已打勾的進度嗎？') : true;
+      if (confirmReset) {
+        localStorage.removeItem(STORAGE_KEY);
+        loadProgress();
+      }
+    });
+
+    // Time Formatter for Splits Calculator
+    function formatTime(totalSeconds) {
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = Math.floor(totalSeconds % 60);
+
+      if (hours > 0) {
+        return `${hours}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
+      }
+      return `${minutes}m ${String(seconds).padStart(2, '0')}s`;
+    }
+
+    function calculateSplits() {
+      const min = parseInt(document.getElementById('calcMin').value, 10) || 0;
+      const sec = parseInt(document.getElementById('calcSec').value, 10) || 0;
+      const secPerKm = (min * 60) + sec;
+
+      if (secPerKm <= 0) return;
+
+      document.getElementById('res5k').innerText = formatTime(secPerKm * 5);
+      document.getElementById('res10k').innerText = formatTime(secPerKm * 10);
+      document.getElementById('resHM').innerText = formatTime(secPerKm * 21.0975);
+      document.getElementById('resFM').innerText = formatTime(secPerKm * 42.195);
+    }
+
+    function applyPreset(min, sec) {
+      document.getElementById('calcMin').value = min;
+      document.getElementById('calcSec').value = sec;
+      calculateSplits();
+    }
+
+    // Startup
+    window.addEventListener('DOMContentLoaded', () => {
+      loadProgress();
+      calculateSplits();
+    });
+  </script>
+</body>
+</html>
